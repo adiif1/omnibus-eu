@@ -27,7 +27,7 @@ class OmnibusEuFree extends Module
     {
         $this->name = 'omnibuseufree';
         $this->tab = 'pricing_promotion';
-        $this->version = '1.0.2';
+        $this->version = '1.0.3';
         $this->author = 'presta.studio';
         $this->need_instance = 1;
         $this->bootstrap = true;
@@ -52,7 +52,7 @@ class OmnibusEuFree extends Module
         include(dirname(__FILE__) . '/sql/install.php');
 
         return parent::install() &&
-            $this->registerHook('header') &&
+            $this->registerHook('displayHeader') &&
             $this->registerHook('displayBackOfficeHeader') &&
             $this->registerHook('actionProductSave') &&
             $this->registerHook('actionProductAttributeUpdate') &&
@@ -210,7 +210,7 @@ class OmnibusEuFree extends Module
         return $this->display(__FILE__, '/views/templates/admin/products-price-list.tpl');
     }
 
-    public function hookHeader()
+    public function hookDisplayHeader()
     {
         $this->context->controller->addCSS($this->_path . '/views/css/omnibuseufree-presta-studio.css');
     }
